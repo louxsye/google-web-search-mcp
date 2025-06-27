@@ -1,0 +1,44 @@
+{
+  "name": "gemini-google-web-search-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Google Web Search using Gemini API",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gemini-google-web-search-mcp": "./dist/index.js",
+    "gsearch": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:codeassist": "tsc src/index-codeassist.ts --outDir dist --target ES2022 --module ESNext --moduleResolution bundler",
+    "build:cli": "tsc src/cli.ts --outDir dist --target ES2022 --module ESNext --moduleResolution bundler",
+    "dev": "tsx src/index.ts",
+    "dev:codeassist": "tsx src/index-codeassist.ts",
+    "dev:cli": "tsx src/cli.ts",
+    "start": "node dist/index.js",
+    "start:codeassist": "node dist/index-codeassist.js",
+    "test": "tsx test/test-mcp.ts",
+    "prepublishOnly": "npm run build && npm run build:cli"
+  },
+  "keywords": [
+    "mcp",
+    "google",
+    "search",
+    "gemini",
+    "web-search"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@google/genai": "^1.7.0",
+    "@google/generative-ai": "^0.24.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "google-auth-library": "^10.1.0",
+    "open": "^10.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
